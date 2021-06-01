@@ -1,7 +1,10 @@
 'use strict';
-function form(formSelector, inputSelector) {
-  const forms = document.querySelectorAll(formSelector),
-        PhoneInputs = document.querySelectorAll(inputSelector);
+import checkNumInputs from './checkNumbImputs';
+
+function form(formSelector, inputSelector, modalState) {
+  const forms = document.querySelectorAll(formSelector);
+        
+        
                    
   const massage = {
   loading: 'Загрузка',
@@ -9,12 +12,8 @@ function form(formSelector, inputSelector) {
   error: 'Ошибка'
   };
 
-  PhoneInputs.forEach((item) => {
-    item.addEventListener('input', () => {
-      item.value = item.value.replace(/\D/ig, '');
-    });
-  });
-
+  checkNumInputs(inputSelector);
+  
   const element = document.createElement('div');
     
   forms.forEach((item, i) => {
@@ -39,7 +38,12 @@ function form(formSelector, inputSelector) {
   };
   
   function sendForm(i, massage, item, element) {
-    const form = new FormData(forms[i]);  
+    const form = new FormData(forms[i]); 
+    if (item.getAttribute('data-calc') == 'end') {
+      for (let key in modalState) {
+        form.append(key, modalState[key]);
+      }
+    } 
     //const json = JSON.stringify(Object.fromEntries(form.entries()));
     
     postData('assets/server.php', form)
@@ -62,3 +66,6 @@ function form(formSelector, inputSelector) {
 
 export default form;  
 
+
+const num = new Date();
+console.log(num);

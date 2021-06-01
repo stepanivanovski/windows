@@ -1,6 +1,6 @@
 'use strict';
 
-function tabs(parentSelector, tabsSelector, classActive, contentSelector) {
+function tabs(parentSelector, tabsSelector, classActive, contentSelector, display = 'block') {
   const parent = document.querySelector(parentSelector),
         tab = document.querySelectorAll(tabsSelector),
         content = document.querySelectorAll(contentSelector);
@@ -16,7 +16,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector) {
   }
 
   function openTab(i = 0){
-    content[i].style.display = 'block';
+    content[i].style.display =  display;
     tab[i].classList.add(classActive);
   }
   hideTabs();
@@ -26,7 +26,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector) {
     const target = e.target;
     if (target && (target.classList.contains(tabsSelector.replace(/\./, '')) || target.parentNode.classList.contains(tabsSelector.replace(/\./, '')))) {
       tab.forEach((item, i) => {
-        if (target == item || target.parentNode == item){
+        if (target == item || target.parentNode == item) {
           hideTabs();
           openTab(i);
         }
