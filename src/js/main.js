@@ -6,6 +6,7 @@ import tabs from './modules/tabs';
 import form from './modules/forms';
 import changeModalState from './modules/changeModalState';
 import timer from './modules/timer';
+import image from './modules/image';
 //import { transformFromAst } from 'babel-core';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -21,5 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
   tabs('.balcon_icons', '.balcon_icons_img', 'do_image_more', 'div.big_img > img', 'inline-block');
   changeModalState(modalState);
   timer('.container1', deadline);
+  image('.works', '.preview', 'popup' );
   });
  
