@@ -3,10 +3,8 @@ import checkNumInputs from './checkNumbImputs';
 
 function form(formSelector, inputSelector, modalState) {
   const forms = document.querySelectorAll(formSelector);
-        
-        
                    
-  const massage = {
+  const message = {
   loading: 'Загрузка',
   done: 'Спасибо за ваши данные, с вами обязательно свяжутся',
   error: 'Ошибка'
@@ -20,7 +18,7 @@ function form(formSelector, inputSelector, modalState) {
       item.addEventListener('submit', (e) => {
       e.preventDefault();
       item.prepend(element);
-      sendForm(i, massage, item, element);
+      sendForm(i, message, item, element);
     });
   });
     
@@ -37,7 +35,7 @@ function form(formSelector, inputSelector, modalState) {
     return await res.text();
   };
   
-  function sendForm(i, massage, item, element) {
+  function sendForm(i, message, item, element) {
     const form = new FormData(forms[i]); 
     if (item.getAttribute('data-calc') == 'end') {
       for (let key in modalState) {
@@ -49,11 +47,11 @@ function form(formSelector, inputSelector, modalState) {
     postData('assets/server.php', form)
      .then((data) => {
       console.log(data);
-      element.textContent = massage.done;
+      element.textContent = message.done;
     })
     .catch(() => {
       console.log('Все плохо');
-        element.textContent = massage.error;
+        element.textContent = message.error;
     })
     .finally(() => {
       item.reset();
@@ -65,7 +63,3 @@ function form(formSelector, inputSelector, modalState) {
 }
 
 export default form;  
-
-
-const num = new Date();
-console.log(num);

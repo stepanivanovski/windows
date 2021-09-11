@@ -12,7 +12,7 @@ import image from './modules/image';
 window.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
-  let modalState ={};
+  let modalState = {};
   let deadline = '2021-11-31';
 
   modals();   
@@ -22,6 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
   tabs('.balcon_icons', '.balcon_icons_img', 'do_image_more', 'div.big_img > img', 'inline-block');
   changeModalState(modalState);
   timer('.container1', deadline);
-  image('.works', '.preview', 'popup' );
+  image('.works');
   });
  

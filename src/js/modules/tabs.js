@@ -8,6 +8,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector, displa
   function hideTabs() {
     content.forEach((item) => {
       item.style.display = 'none';
+      item.classList.remove('faded');
     });
 
     tab.forEach((item) => {
@@ -18,6 +19,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector, displa
   function openTab(i = 0){
     content[i].style.display =  display;
     tab[i].classList.add(classActive);
+    content[i].classList.add('faded');
   }
   hideTabs();
   openTab();

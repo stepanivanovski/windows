@@ -17831,7 +17831,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.balcon_icons', '.balcon_icons_img', 'do_image_more', 'div.big_img > img', 'inline-block');
   Object(_modules_changeModalState__WEBPACK_IMPORTED_MODULE_4__["default"])(modalState);
   Object(_modules_timer__WEBPACK_IMPORTED_MODULE_5__["default"])('.container1', deadline);
-  Object(_modules_image__WEBPACK_IMPORTED_MODULE_6__["default"])('.works', '.preview', 'popup');
+  Object(_modules_image__WEBPACK_IMPORTED_MODULE_6__["default"])('.works');
 });
 
 /***/ }),
@@ -18114,6 +18114,7 @@ var modals = function modals() {
           item.style.display = "none";
         });
         modal.style.display = "block";
+        document.body.style.marginRight = '19px';
         document.body.style.overflow = "hidden"; // document.body.classList.add('modal-open');
       });
     });
@@ -18122,7 +18123,8 @@ var modals = function modals() {
       //     item.style.display = "none";
       //   });
       modal.style.display = "none";
-      document.body.style.overflow = ""; // document.body.classList.remove('modal-open');
+      document.body.style.overflow = "";
+      document.body.style.marginRight = '0px'; // document.body.classList.remove('modal-open');
     });
     modal.addEventListener("click", function (e) {
       if (e.target === modal && closeClickOveray) {
@@ -18130,7 +18132,8 @@ var modals = function modals() {
         //   item.style.display = "none";
         // });
         modal.style.display = "none";
-        document.body.style.overflow = ""; // document.body.classList.remove('modal-open');
+        document.body.style.overflow = "";
+        document.body.style.marginRight = '0px'; // document.body.classList.remove('modal-open');
       }
     });
   }
@@ -18180,6 +18183,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector) {
   function hideTabs() {
     content.forEach(function (item) {
       item.style.display = 'none';
+      item.classList.remove('faded');
     });
     tab.forEach(function (item) {
       item.classList.remove(classActive);
@@ -18190,6 +18194,7 @@ function tabs(parentSelector, tabsSelector, classActive, contentSelector) {
     var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     content[i].style.display = display;
     tab[i].classList.add(classActive);
+    content[i].classList.add('faded');
   }
 
   hideTabs();
